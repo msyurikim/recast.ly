@@ -6,7 +6,7 @@ var VideoListEntry = ({video, onVideoTitleClick}) => (
     </div>
 
     <div className="media-body">
-      <div onClick={() => {onVideoTitleClick(video)}} className="video-list-entry-title">{video.snippet.title}</div>
+      <div onClick={() => { onVideoTitleClick(video); }} className="video-list-entry-title">{video.snippet.title}</div>
       <div className="video-list-entry-detail">{video.snippet.description}</div>
     </div>
   </div>
