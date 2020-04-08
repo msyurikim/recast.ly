@@ -1,25 +1,30 @@
 import exampleVideoData from '../data/exampleVideoData.js';
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
-// import searchYouTube from '../lib/searchYouTube.js';
+import Search from './Search.js';
+
 
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videos: [],
-      currentVideo: {}
+      videos: exampleVideoData,
+      currentVideo: exampleVideoData[0]
     };
   }
 
+  componentDidMount(){
+    this.getLiveVideos('tigers');
+  }
+
   getLiveVideos(query) {
+    console.log('getLiveVideos invoked', this.props.API_KEY);
     var optionsObj = {
-      key: this.props.API_KEY
-
-
+      key: this.props.API_KEY,  //does this work?
+      query: query,
+      max: 5
     };
-
     this.props.searchYouTube(optionsObj, (videos)=> {
       this.setState({videos: videos, currentVideo: videos[0]});
     });
@@ -34,6 +39,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
+            <Search getLiveVideos={this.getLiveVideos.bind(this)} />
             {/* <div><h5><em>search</em> view goes here</h5></div> */}
           </div>
         </nav>
