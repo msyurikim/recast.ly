@@ -6,6 +6,7 @@ var Search = ({getLiveVideos}) => {
         className="form-control"
         type="text"
         onChange={((event) => { getLiveVideos(event.target.value); })}
+        //use _.debounce
       />
       <button className="btn hidden-sm-down">
         <span className="glyphicon glyphicon-search"></span>
